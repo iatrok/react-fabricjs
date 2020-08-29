@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Container, Row, Col, Tabs, Tab, Card, InputGroup, FormControl } from 'react-bootstrap';
+import { Button, Container, Row, Col, Tabs, Tab, Card, InputGroup, FormControl, Accordion } from 'react-bootstrap';
 import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -78,13 +78,13 @@ class App extends Component {
                                     </div>
                                 </div>
                                 {/* End toolbar */}
-                                
+
                                 {/* Begin wraper-canvas */}
                                 <div className="wrap-canvas">
                                     <div className="multi-artboard">
                                         <div className="artboard-item position-relative">
                                             <div className="drawing-element">
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -92,7 +92,48 @@ class App extends Component {
                                 {/* End wraper-canvas */}
                             </div>
                         </Col>
-                        <Col md={2} className="col-right">Right</Col>
+                        <Col md={2} className="col-right">
+                            <div className="right-nav-layer-content">
+                                {/* Begin toolbar edit */}
+                                <div className="right-nav-top-section">
+                                    <div className="toolbar-edit">
+                                        <Button variant='link'>
+                                            <span className="material-icons">undo</span>
+                                            <span className="text">Undo</span>
+                                        </Button>
+                                        <Button variant='link'>
+                                            <span class="material-icons">redo</span>
+                                            <span className="text">Redo</span>
+                                        </Button>
+                                        <Button variant='link'>
+                                            <span className="material-icons copy">content_copy</span>
+                                            <span className="text">Duplicate</span>
+                                        </Button>
+                                        <Button variant='link'>
+                                            <span className="material-icons delete">delete</span>
+                                            <span className="text">Delete</span>
+                                        </Button>
+                                    </div>
+                                </div>
+                                {/* End toolbar edit */}
+                                {/* Begin right nav layer */}
+                                <div className="right-nav-layer-section">
+                                    <Accordion defaultActiveKey="0">
+                                        <Card className="rounded-0 border-0 card-cus">
+                                            <Accordion.Toggle as={Card.Header} eventKey="0" className="rounded-0">
+                                                Layers
+                                            </Accordion.Toggle>
+                                            <Accordion.Collapse eventKey="0">
+                                                <Card.Body>
+                                                    <div className="text-center">None</div>
+                                                </Card.Body>
+                                            </Accordion.Collapse>
+                                        </Card>
+                                    </Accordion>
+                                </div>
+                                {/* End right nav layer */}
+                            </div>
+                        </Col>
                     </Row>
                 </Container>
 
