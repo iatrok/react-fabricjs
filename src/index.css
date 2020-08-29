@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Icons');
+body {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0F1724;
+  font-size: 14px;
+  color:#c6d3e7
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.header{background-color: rgb(33, 44, 61); box-shadow: rgba(0, 0, 0, 0.27) 0px 2px 3px 2px; height: 69px; z-index: 9999;}
+.header .dropdown-menu{left: auto; right:0}
+.header .navbar-nav .nav-link{color:#c6d3e7; position: relative; padding: 0px 20px 0px 40px;}
+.header .navbar-nav .nav-link:hover{color:#11ece5}
+.header .navbar-nav .nav-link ion-icon{font-size: 25px; position: absolute; left:7px}
+.header .logo{width: 50px;}
+.header .logo-text{color:#c6d3e7!important}
+
+.col-left{background-color: rgb(29, 38, 54); height: calc(100vh - 69px); padding:10px 0px; position: relative;} 
+.col-right{background-color: rgb(29, 38, 54); height: calc(100vh - 69px);} 
+
+.col-left .nav-tabs{border: none}
+.col-left .nav-tabs .nav-link{border: none; color: #95a4be; outline: none}
+.col-left .nav-tabs .nav-link:hover{background: #314A6E;}
+.col-left .nav-tabs .nav-link .icon{font-size: 20px; top:4px; position: relative;}
+.col-left .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{background: rgb(36, 54, 78); border:none; color: #c6d3e7}
+.col-left .tab-content{background: rgb(36, 54, 78); color:#c6d3e7; height: calc(100vh - 120px) ; padding:15px}
+
+/* Card */
+.card-cus{background-color: #1A2230; font-size: 14px;}
+.card-cus .card-header{background-color: rgb(59, 80, 109); background-image: linear-gradient(to right, rgba(13, 230, 255, 0.15) 0%, rgba(201, 189, 174, 0) 25%); padding:10px}
+.card-cus .card-header .btn-upload{color:#c6d3e7; border-color:#c6d3e7; background: transparent; font-size: 14px;}
+.card-cus .card-header .btn-upload:hover{color:#11ece5; border-color:#11ece5}
+.card-cus .card-header .btn-upload ion-icon{position: relative; top:4px; font-size: 18px;}
+.search-img{border:1px solid rgb(48, 65, 93); margin-bottom: 0px;}
+.search-img .form-control{background: transparent; border:none; border-top-left-radius: 20px; border-bottom-left-radius: 20px; color:#95a4be; font-size: 14px; outline: none; box-shadow: none;}
+.search-img .input-group-text{background: #24364e; border-radius:20px; color:#95a4be; margin:2px; border: none; font-size:14px}
+.search-img .input-group-text:hover{background-color: rgb(59, 80, 109); cursor: pointer;}
+
+/* around-canvas */
+.around-canvas{display: flex; flex-flow: column; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-box-align: center; align-items: center; height: 100%; position: relative; transition: .3s ease-in-out; padding:15px;}
+.canvas-toolbar{margin-bottom:10px}
+.canvas-toolbar .name{min-width: 180px;}
+.canvas-toolbar .name p{font-weight: 600; font-size: 16px; margin:0px}
+.canvas-toolbar .name i{font-size: 12px; color:#95a4be}
+.canvas-toolbar .extend .mat-icon-button{margin:0; padding:0; color:#c6d3e7;  width: 40px; height: 40px; outline: none; box-shadow: none; }
+.canvas-toolbar .extend .mat-icon-button .icon{font-size: 27px; font-weight: 400; line-height: 40px;}
+.canvas-toolbar .extend .mat-icon-button:hover .icon{color: #11ece5;}
+.canvas-toolbar .extend .mat-icon-button .icon.zoom{font-size: 32px;}
+.canvas-toolbar .extend .mat-icon-button .icon.delete{font-size: 29px;}
+.canvas-toolbar .extend .mat-icon-button .icon.delete.disable{color: #5f6a7b; cursor:not-allowed}
+.canvas-toolbar .artboard-number{display: inline-block; padding-left:30px;}
+.canvas-toolbar .artboard-number .input{margin:0px 5px; width: 40px; height: 27px;}
+.canvas-toolbar .artboard-number .panigation-action-artboard{margin-left:10px}
+.canvas-toolbar .artboard-number .panigation-action-artboard .btn{padding:0px; width: 27px; height: 27px; margin:0px 1px; color:#c6d3e7; background:  rgb(59, 80, 109); border-color: #c6d3e7;}
+.canvas-toolbar .artboard-number .panigation-action-artboard .btn:hover{background: #c6d3e7; color:#0F1724;}
+.wraper-canvas{ transition: .3s ease-in-out; display: block; text-align: center;width: 100%; overflow: auto; }
+.multi-artboard{display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; background-color: #fefefe;margin: 0 auto; width: 609px; height: 783px;}
+.artboard-item{width: 100%; height: 100%; }
+.drawing-element{height: 100%; width: 100%; outline:2px dashed; outline-offset:-10px; }
