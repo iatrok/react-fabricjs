@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Container, Row, Col, Tabs, Tab, Card, InputGroup, FormControl, Accordion } from 'react-bootstrap';
+import { Button, Container, Row, Col, Tabs, Tab, Card, InputGroup, FormControl, Accordion, Pagination } from 'react-bootstrap';
 import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -41,12 +41,43 @@ class App extends Component {
                                             </InputGroup>
                                         </Card.Body>
                                     </Card>
-                                    
+
                                     {/* Begin tab image */}
                                     <div className="tab-image-section">
-                                        <Tabs defaultActiveKey="myImage"  className="tab-images">
+                                        <Tabs defaultActiveKey="myImage" className="tab-images">
                                             <Tab eventKey="myImage" title="My Images">
-                                                My Images
+                                                <div className="list-images">
+                                                    <div className="item-image">
+                                                        <img alt="image" src="https://cdn.corjl.com/designer/thumbnails/5bf97bdcaaa2e.svg" />
+                                                        <i>HWSLZCvaKQhslRKDMlS75afH1mpmENnzpfQBjzBR</i>
+                                                    </div>
+                                                    <div className="item-image">
+                                                        <img alt="image" src="https://cdn.corjl.com/designer/thumbnails/5bf97bdcf423d.svg" />
+                                                        <i>BirthdayCakePinkSwirl-01</i>
+                                                    </div>
+                                                    <div className="item-image">
+                                                        <img alt="image" src="https://cdn.corjl.com/designer/thumbnails/5bf97bdd0fcf2.svg" />
+                                                        <i>BirthdayCakeBanner-01</i>
+                                                    </div>
+                                                    <div className="item-image">
+                                                        <img alt="image" src="https://cdn.corjl.com/designer/thumbnails/5caf83b80602f.png" />
+                                                        <i>background</i>
+                                                    </div>
+                                                    <div className="item-image">
+                                                        <img alt="image" src="https://cdn.corjl.com/designer/thumbnails/5bce2f8ac987e.jpeg" />
+                                                        <i>Sample Little Girl</i>
+                                                    </div>
+                                                </div>
+                                                <Pagination className="pagination-image justify-content-end">
+                                                    <Pagination.Item><i className="fad fa-step-backward"></i></Pagination.Item>
+                                                    <Pagination.Item><i className="fad fa-chevron-double-left"></i></Pagination.Item>
+                                                    <Pagination.Item>{1}</Pagination.Item>
+                                                    <Pagination.Ellipsis />
+                                                    <Pagination.Item>{4}</Pagination.Item>
+                                                    <Pagination.Item active>{5}</Pagination.Item>
+                                                    <Pagination.Item><i className="fad fa-chevron-double-right"></i></Pagination.Item>
+                                                    <Pagination.Item><i className="fad fa-step-forward"></i></Pagination.Item>
+                                                </Pagination>
                                             </Tab>
                                             <Tab eventKey="background" title="Backgrounds">
                                                 Backgrounds
