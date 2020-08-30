@@ -22,11 +22,11 @@ class App extends Component {
                                 defaultActiveKey="home"
                                 className="nav-justified"
                             >
-                                <Tab eventKey="home" title={<span><ion-icon name="image-outline" class="icon"></ion-icon> Images</span>}>
+                                <Tab eventKey="home" title={<span><i className="far fa-image icon"></i> Images</span>}>
                                     {/* Begin card upload image and search */}
                                     <Card className="card-cus border-0">
                                         <Card.Header>
-                                            <Button className="btn-upload rounded-pill"> <ion-icon name="cloud-upload-outline"></ion-icon> Upload</Button>
+                                            <Button className="btn-upload rounded-pill"><i className="fad fa-upload"></i> Upload</Button>
                                         </Card.Header>
                                         <Card.Body>
                                             <InputGroup className="search-img rounded-pill">
@@ -41,11 +41,26 @@ class App extends Component {
                                             </InputGroup>
                                         </Card.Body>
                                     </Card>
+                                    
+                                    {/* Begin tab image */}
+                                    <div className="tab-image-section">
+                                        <Tabs defaultActiveKey="myImage"  className="tab-images">
+                                            <Tab eventKey="myImage" title="My Images">
+                                                My Images
+                                            </Tab>
+                                            <Tab eventKey="background" title="Backgrounds">
+                                                Backgrounds
+                                            </Tab>
+                                            <Tab eventKey="cusImage" title="Customer Images">
+                                                Customer Images
+                                            </Tab>
+                                        </Tabs>
+                                    </div>
                                 </Tab>
-                                <Tab eventKey="profile" title={<span><ion-icon name="text-sharp" class="icon"></ion-icon> Fonts</span>}>
+                                <Tab eventKey="profile" title={<span><i className="fad fa-font icon"></i> Fonts</span>}>
                                     Fonts
                                 </Tab>
-                                <Tab eventKey="contact" title={<span><ion-icon name="information-circle-sharp" class="icon"></ion-icon> Fonts</span>}>
+                                <Tab eventKey="contact" title={<span><i className="fas fa-info-circle icon"></i> Info</span>}>
                                     Fonts
                                 </Tab>
                             </Tabs>
@@ -59,11 +74,11 @@ class App extends Component {
                                         <i>8.5 x 11 in</i>
                                     </div>
                                     <div className="extend">
-                                        <Button variant="link" title="Zoom In" className="mat-icon-button"><span className="material-icons icon zoom">zoom_in</span></Button>
-                                        <Button variant="link" title="Zoom Out" className="mat-icon-button"><span className="material-icons icon zoom">zoom_out</span></Button>
-                                        <Button variant="link" title="Duplicate Page" className="mat-icon-button"><span className="material-icons icon">content_copy</span></Button>
-                                        <Button variant="link" title="Add Page" className="mat-icon-button"><span className="material-icons icon">note_add</span></Button>
-                                        <Button variant="link" title="Delete Page" className="mat-icon-button"><span className="material-icons icon delete disable">delete</span></Button>
+                                        <Button variant="link" title="Zoom In" className="mat-icon-button"><i className="fal fa-search-plus icon"></i></Button>
+                                        <Button variant="link" title="Zoom Out" className="mat-icon-button"><i className="fal fa-search-minus icon"></i></Button>
+                                        <Button variant="link" title="Duplicate Page" className="mat-icon-button"><i className="fal fa-copy icon"></i></Button>
+                                        <Button variant="link" title="Add Page" className="mat-icon-button"><i className="fal fa-file-plus icon"></i></Button>
+                                        <Button variant="link" title="Delete Page" className="mat-icon-button"><i className="fal fa-trash-alt icon disable"></i></Button>
                                     </div>
                                     <div className="artboard-number d-flex align-items-center">
                                         <span>
@@ -72,8 +87,8 @@ class App extends Component {
                                             of 1
                                         </span>
                                         <div className="panigation-action-artboard">
-                                            <Button variant="light" className="rounded-0"><span className="material-icons">navigate_before</span></Button>
-                                            <Button variant="light" className="rounded-0"><span className="material-icons">navigate_next</span></Button>
+                                            <Button variant="light" className="rounded-0"><i className="fal fa-chevron-left"></i></Button>
+                                            <Button variant="light" className="rounded-0"><i className="fal fa-chevron-right"></i></Button>
                                         </div>
                                     </div>
                                 </div>
@@ -98,19 +113,19 @@ class App extends Component {
                                 <div className="right-nav-top-section">
                                     <div className="toolbar-edit">
                                         <Button variant='link'>
-                                            <span className="material-icons">undo</span>
+                                            <span className="fa fa-undo"></span>
                                             <span className="text">Undo</span>
                                         </Button>
                                         <Button variant='link'>
-                                            <span class="material-icons">redo</span>
+                                            <span className="fa fa-redo"></span>
                                             <span className="text">Redo</span>
                                         </Button>
                                         <Button variant='link'>
-                                            <span className="material-icons copy">content_copy</span>
+                                            <span className="fa fa-copy copy"></span>
                                             <span className="text">Duplicate</span>
                                         </Button>
                                         <Button variant='link'>
-                                            <span className="material-icons delete">delete</span>
+                                            <span className="fa fa-trash-alt delete"></span>
                                             <span className="text">Delete</span>
                                         </Button>
                                     </div>
@@ -120,12 +135,61 @@ class App extends Component {
                                 <div className="right-nav-layer-section">
                                     <Accordion defaultActiveKey="0">
                                         <Card className="rounded-0 border-0 card-cus">
-                                            <Accordion.Toggle as={Card.Header} eventKey="0" className="rounded-0">
-                                                Layers
-                                            </Accordion.Toggle>
+                                            <Card.Header className="position-relative">
+                                                <span className="title">Layers</span>
+                                                <Button variant="default" className="p-0">
+                                                    <i className="fad fa-lock-alt icon"></i>
+                                                </Button>
+                                                <Button variant="default" className="p-0">
+                                                    <i className="fad fa-pencil icon"></i>
+                                                </Button>
+                                                <Button variant="default" className="p-0">
+                                                    <i className="fad fa-eye icon view"></i>
+                                                </Button>
+                                                <Button variant="default" className="p-0 float-right"><i className="fad fa-chevron-up"></i></Button>
+                                            </Card.Header>
                                             <Accordion.Collapse eventKey="0">
-                                                <Card.Body>
-                                                    <div className="text-center">None</div>
+                                                <Card.Body className="list-layer">
+                                                    <div className="item-layer">
+                                                        <div className="d-flex align-items-center item-layer-content">
+                                                            <div className="icon lock">
+                                                                <i className="fad fa-lock-alt"></i>
+                                                            </div>
+                                                            <div className="icon edit">
+                                                                <i className="fad fa-pencil"></i>
+                                                            </div>
+                                                            <div className="icon can-view">
+                                                                <i className="fad fa-eye"></i>
+                                                            </div>
+                                                            <div className="icon type">
+                                                                <i className="fad fa-font"></i>
+                                                            </div>
+                                                            <div className="name">Text layer</div>
+                                                            <div className="icon remove">
+                                                                <i className="fal fa-trash-alt"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="item-layer">
+                                                        <div className="d-flex align-items-center item-layer-content">
+                                                            <div className="icon lock">
+                                                                <i className="fad fa-lock-alt"></i>
+                                                            </div>
+                                                            <div className="icon edit">
+                                                                <i className="fad fa-pencil"></i>
+                                                            </div>
+                                                            <div className="icon can-view">
+                                                                <i className="fad fa-eye"></i>
+                                                            </div>
+                                                            <div className="icon type">
+                                                                <i className="far fa-image"></i>
+                                                            </div>
+                                                            <div className="name">Text layer</div>
+                                                            <div className="icon remove">
+                                                                <i className="fal fa-trash-alt"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </Card.Body>
                                             </Accordion.Collapse>
                                         </Card>
