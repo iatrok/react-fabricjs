@@ -6,7 +6,7 @@ class Header extends Component {
         return (
             <Navbar className="header">
                 <Navbar.Brand href="/">
-                    <img src="/images/logo.svg" className="logo" alt=""/>
+                    <img src="images/logo.svg" className="logo" alt=""/>
                     <span className="logo-text">Digital</span>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />

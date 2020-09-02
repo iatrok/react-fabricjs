@@ -1,15 +1,122 @@
 import React, { Component } from 'react';
+import { hot } from 'react-hot-loader';
 import { Button, Container, Row, Col, Tabs, Tab, Card, InputGroup, FormControl, Accordion, Pagination } from 'react-bootstrap';
-import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {v4} from 'uuid';
 
 import Header from './component/header';
 
 import { connect } from 'react-redux';
 import { userAction } from './store/rootAction';
 
+import Canvas from './component/canvas/canvas';
+
+const propertiesToInclude = [
+	'id',
+	'name',
+	'locked',
+	'file',
+	'src',
+	'link',
+	'tooltip',
+	'animation',
+	'layout',
+	'workareaWidth',
+	'workareaHeight',
+	'videoLoadType',
+	'autoplay',
+	'shadow',
+	'muted',
+	'loop',
+	'code',
+	'icon',
+	'userProperty',
+	'trigger',
+	'configuration',
+	'superType',
+	'points',
+	'svg',
+	'loadType',
+];
+
+const defaultOption = {
+	fill: 'rgba(0, 0, 0, 1)',
+	stroke: 'rgba(255, 255, 255, 0)',
+	strokeUniform: true,
+	resource: {},
+	link: {
+		enabled: false,
+		type: 'resource',
+		state: 'new',
+		dashboard: {},
+	},
+	tooltip: {
+		enabled: true,
+		type: 'resource',
+		template: '<div>{{message.name}}</div>',
+	},
+	animation: {
+		type: 'none',
+		loop: true,
+		autoplay: true,
+		delay: 100,
+		duration: 1000,
+	},
+	userProperty: {},
+	trigger: {
+		enabled: false,
+		type: 'alarm',
+		script: 'return message.value > 0;',
+		effect: 'style',
+	},
+};
+
+
 class App extends Component {
+
+    state = {
+		selectedItem: null,
+		zoomRatio: 1,
+		preview: false,
+		loading: false,
+		progress: 0,
+		animations: [],
+		styles: [],
+		dataSources: [],
+		editing: false,
+		descriptors: {},
+		objects: undefined,
+    };
+    canvasHandlers = {
+        onAdd: target => {
+			const { editing } = this.state;
+			this.forceUpdate();
+			if (!editing) {
+				this.changeEditing(true);
+			}
+			if (target.type === 'activeSelection') {
+				this.canvasHandlers.onSelect(null);
+				return;
+			}
+			this.canvasRef.handler.select(target);
+        },
+        onAddItem: (item, centered) => {
+            const id = v4();
+            const option = Object.assign({}, item.option, {id});
+            this.canvasRef.handler.add(option, centered);
+        }
+    }
+    changeEditing = editing => {
+		this.setState({
+			editing,
+		});
+	};
+    componentDidMount(){
+        console.log('djfklsds', this.canvasRef);
+    }
     render() {
+        const { onAdd } = this.canvasHandlers;
+        
         return (
             <div className="App">
                 <Header />
@@ -47,11 +154,47 @@ class App extends Component {
                                         <Tabs defaultActiveKey="myImage" className="tab-images">
                                             <Tab eventKey="myImage" title="My Images">
                                                 <div className="list-images">
-                                                    <div className="item-image">
+                                                    <div 
+                                                        className="item-image"
+                                                        onClick={()=>{this.canvasHandlers.onAddItem(
+                                                            {
+                                                                "name": "Image",
+                                                                "description": "",
+                                                                "type": "image",
+                                                                "icon": {
+                                                                    "prefix": "fas",
+                                                                    "name": "image"
+                                                                },
+                                                                "option": {
+                                                                    "type": "image",
+                                                                    "name": "New image",
+                                                                    "src": "https://cdn.corjl.com/designer/thumbnails/5bf97bdcaaa2e.svg"
+                                                                }
+                                                            }
+                                                        )}}
+                                                    >
                                                         <img alt="image" src="https://cdn.corjl.com/designer/thumbnails/5bf97bdcaaa2e.svg" />
                                                         <i>HWSLZCvaKQhslRKDMlS75afH1mpmENnzpfQBjzBR</i>
                                                     </div>
-                                                    <div className="item-image">
+                                                    <div 
+                                                        className="item-image"
+                                                        onClick={()=>{this.canvasHandlers.onAddItem(
+                                                            {
+                                                                "name": "Image",
+                                                                "description": "",
+                                                                "type": "image",
+                                                                "icon": {
+                                                                    "prefix": "fas",
+                                                                    "name": "image"
+                                                                },
+                                                                "option": {
+                                                                    "type": "image",
+                                                                    "name": "New image",
+                                                                    "src": "https://cdn.corjl.com/designer/thumbnails/5bf97bdcf423d.svg"
+                                                                }
+                                                            }
+                                                        )}}
+                                                    >
                                                         <img alt="image" src="https://cdn.corjl.com/designer/thumbnails/5bf97bdcf423d.svg" />
                                                         <i>BirthdayCakePinkSwirl-01</i>
                                                     </div>
@@ -128,10 +271,18 @@ class App extends Component {
                                 {/* Begin wraper-canvas */}
                                 <div className="wrap-canvas">
                                     <div className="multi-artboard">
-                                        <div className="artboard-item position-relative">
-                                            <div className="drawing-element">
+                                        <div className="artboard-item position-relative" ref = {c => {this.container = c;}}>
+                                            <Canvas 
+                                                ref={c => {this.canvasRef = c;}}
+                                                minZoom={30}
+                                                defaultOption={defaultOption}
+                                                propertiesToInclude={propertiesToInclude}
+                                                onAdd={onAdd}
+                                                width={600}
+                                                height={800}
+                                            >
 
-                                            </div>
+                                            </Canvas>
                                         </div>
                                     </div>
                                 </div>
@@ -245,4 +396,4 @@ const mapDispatch = dispatch => ({
     fetchUser: username => dispatch(userAction.getUser(username))
 })
 
-export default connect(mapState, mapDispatch)(App);
+export default connect(mapState, mapDispatch)(hot(module)(App));

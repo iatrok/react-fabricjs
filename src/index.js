@@ -4,11 +4,22 @@ import App from './App';
 import store from "./store";
 import { Provider } from "react-redux";
 import './index.css';
+import { AppContainer } from 'react-hot-loader';
 
-ReactDOM.render(
-	
-	<Provider store={store}>
-		<App />
-	</Provider>,
-	document.getElementById('root')
-);
+const render = (Component) => {
+	ReactDOM.render(
+		<AppContainer>
+			<Provider store={store}>
+				<Component />
+			</Provider>
+		</AppContainer>,
+		document.getElementById('root')
+	);
+}
+render(App);
+
+if (module.hot) {
+    module.hot.accept('./App', () => {
+        render(App);
+    });
+}
